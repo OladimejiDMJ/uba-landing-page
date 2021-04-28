@@ -1,0 +1,345 @@
+@use "../../styles" as *;
+
+.layout-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  padding: 20px 0;
+  z-index: 9999;
+  justify-content: center;
+  box-shadow: 5px 5px 10px 0px rgb(0, 0, 0, 0.1);
+  transition: 0.3s;
+
+  .headerContainer {
+    width: 90%;
+    max-width: 1250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mQ(1000px) {
+      align-items: flex-start;
+    }
+
+    @include mQ(767px) {
+      align-items: center;
+    }
+  }
+
+  .headerContainer--child1 {
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+
+    @include mQ(767px) {
+      display: flex;
+    }
+
+    .icon {
+      color: $whiteColor;
+      margin: 0 15px;
+      font-size: 18px;
+      display: none;
+
+      @include mQ(600px) {
+        display: inline;
+      }
+    }
+
+    button {
+      padding: 8px 10px;
+      color: $whiteColor;
+      background-image: linear-gradient(90deg, #d51709 0%, #aa0000 100%);
+      border: none;
+      outline: none;
+      display: none;
+      z-index: 10000;
+      align-items: center;
+      border-radius: 5px;
+
+      @include mQ(600px) {
+        display: flex;
+      }
+
+      span {
+        margin-left: 5px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .headerContainer--toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 30px;
+    z-index: 10000;
+
+    @include mQ(767px) {
+      display: flex;
+    }
+
+    .toggle {
+      width: 80%;
+      height: 3px;
+      background-color: $grayColor;
+      transition: 0.3s;
+
+      &:nth-child(1),
+      &:nth-child(2) {
+        margin-bottom: 5px;
+      }
+    }
+
+    .toggle:nth-child(1).show {
+      transform: translateY(9px) rotate(45deg);
+    }
+
+    .toggle:nth-child(2).show {
+      opacity: 0;
+    }
+
+    .toggle:nth-child(3).show {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+
+  .headerContainer--nav {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    transition: 0.3s;
+
+    @include mQ(1263px) {
+      width: 85%;
+    }
+
+    @include mQ(767px) {
+      display: flex;
+      position: fixed;
+      background-color: $whiteColor;
+      width: 100%;
+      height: 500px;
+      top: -100%;
+      left: 0;
+      z-index: 99;
+      flex-direction: column;
+      padding: 30px 10px;
+    }
+
+    ul {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+
+      @include mQ(767px) {
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+      }
+
+      li {
+        margin-left: 5px;
+
+        @include mQ(767px) {
+          width: 100%;
+          display: flex;
+        }
+      }
+      li:nth-child(1) a {
+        background-color: $primaryColor;
+        padding: 15px 25px;
+        border-radius: 5px;
+
+        @include mQ(767px) {
+          width: 100%;
+          text-align: center;
+          justify-content: center;
+          color: $whiteColor;
+        }
+
+        .icon {
+          margin-right: 5px;
+        }
+
+        &:hover {
+          color: $whiteColor;
+          background-image: linear-gradient(90deg, #d51709 0%, #bb0903 100%);
+          border-bottom: none;
+        }
+      }
+
+      li:nth-child(2) a,
+      li:nth-child(8) a {
+        span {
+          display: none;
+        }
+
+        @include mQ(767px) {
+          .icon {
+            display: none;
+          }
+
+          span {
+            display: inline;
+            text-transform: capitalize;
+            font-size: $linkFontSize;
+          }
+        }
+
+        &:hover {
+          border-bottom: none;
+        }
+      }
+
+      li:nth-child(9) a {
+        padding: 15px 25px;
+        border-radius: 5px;
+        border: 1px solid $whiteColor;
+      }
+
+      a {
+        color: $whiteColor;
+        text-decoration: none;
+        font-size: $linkFontSize;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 15px 10px;
+        transition: 0.3s;
+
+        @include mQ(767px) {
+          width: 100%;
+          color: $grayColor;
+          display: flex;
+          justify-content: space-between;
+          text-transform: capitalize;
+        }
+
+        &:hover {
+          color: $primaryColor;
+          border-bottom: 1px solid $primaryColor;
+        }
+      }
+
+      .plusIcon {
+        display: none;
+
+        @include mQ(767px) {
+          display: inline;
+        }
+      }
+
+      li:nth-child(9) a {
+        @include mQ(767px) {
+          justify-content: center;
+        }
+      }
+
+      li:nth-child(2) a,
+      li:nth-child(8) a,
+      li:nth-child(10) a {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+      }
+
+      li:nth-child(10) {
+        @include mQ(767px) {
+          display: none;
+        }
+      }
+
+      li:nth-child(10) a {
+        transform: rotateY(180deg);
+        font-weight: 700;
+
+        &:hover {
+          border-bottom: none;
+        }
+      }
+
+      li:nth-child(9) a {
+        &:hover {
+          border-bottom: none;
+          background-color: $whiteColor;
+          color: $grayColor;
+        }
+      }
+    }
+  }
+
+  .headerContainer--nav.show {
+    top: 70px;
+  }
+
+  .headerContainer--nav.show .nav-bg {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: -2;
+  }
+
+  .headerContainer--brand {
+    width: 170px;
+    display: flex;
+    z-index: 100000;
+
+    @include mQ(1263px) {
+      width: 130px;
+    }
+
+    @include mQ(1000px) {
+      width: 70px;
+    }
+
+    a {
+      display: flex;
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.layout-header.show {
+  background-color: $whiteColor;
+}
+
+.layout-header.scroll {
+  background-color: $whiteColor;
+  padding: 15px 0;
+
+  .headerContainer--nav {
+    ul {
+      a {
+        color: $grayColor;
+
+        &:hover {
+          color: $primaryColor;
+          border-bottom: 1px solid $primaryColor;
+        }
+      }
+
+      li:nth-child(1) a {
+        color: $whiteColor;
+      }
+
+      li:nth-child(9) a {
+        padding: 15px 25px;
+        border-radius: 0;
+        color: $grayColor;
+        border: none;
+      }
+    }
+  }
+}

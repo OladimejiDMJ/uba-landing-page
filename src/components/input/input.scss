@@ -1,0 +1,44 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 10px;
+
+  label {
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .input {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: 0.3s;
+
+    &:focus {
+      background-color: rgba(255, 255, 255, 1);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  @mixin width($arg) {
+    width: $arg;
+  }
+
+  .input-errorMsg {
+    font-size: small;
+    font-weight: 600;
+    color: rgb(216, 61, 61);
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+  }
+}
+
+.form-group-md {
+  @extend .form-group;
+  width: 50%;
+}

@@ -1,0 +1,76 @@
+@use "../../styles" as *;
+
+$primaryColor: #004cff;
+$secondaryColor: #1ab3ff;
+$whiteColor: #ffffff;
+
+.button {
+  // background-color: $color;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  padding: 7px 25px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 10px 30px #004cff1a;
+  transition: 0.3s;
+
+  .button-text {
+    color: $whiteColor;
+    transition: all 0.3s;
+  }
+
+  .button-icon {
+    display: none;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    background-image: linear-gradient(
+      180deg,
+      $secondaryColor 10%,
+      $primaryColor 100%
+    );
+    box-shadow: 0px 20px 30px #004cff33;
+
+    .button-icon {
+      display: flex;
+      animation: iconRight 0.3s forwards;
+    }
+
+    @keyframes iconRight {
+      0% {
+        opacity: 0;
+        transform: translateX(0);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(10px);
+      }
+    }
+  }
+}
+
+.form-submit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button-large {
+  @extend .button;
+  width: 100%;
+}
+
+.button-medium {
+  @extend .button;
+  width: 50%;
+}
+
+.button-normal {
+  @extend .button;
+}
